@@ -1,7 +1,7 @@
-﻿<Window x:Class="WpfAppXGCommLib.MainWindow"
+﻿<Window x:Class="Elevator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Elevator HMI System" Height="750" Width="1300" Background="#1A1C20">
+        Title="Elevator WPF HMI" Height="750" Width="1300" Background="#1A1C20">
 
     <Window.Resources>
         <Style x:Key="ElevatorButtonStyle" TargetType="Button">
@@ -78,7 +78,7 @@
                 </StackPanel>
 
                 <Canvas Grid.Column="1" x:Name="ShaftCanvas" ClipToBounds="True">
-                    <Path Stroke="#3E4451" StrokeThickness="2" Data="M60,50 V600 H380 V50 M60,187 H380 M60,325 H380 M60,462 H380"/>
+                    <Path Stroke="#3E4451" StrokeThickness="2" Data="M60,50 V600 H380 V50 M60,187.5 H380 M60,325 H380 M60,462.5 H380"/>
                     <Rectangle Width="6" Height="550" Fill="#18191C" Canvas.Left="215" Canvas.Top="50"/>
 
                     <TextBlock Text="4" Canvas.Right="80" Canvas.Top="105" Foreground="#8E9297" FontSize="18"/>
@@ -86,7 +86,7 @@
                     <TextBlock Text="2" Canvas.Right="80" Canvas.Top="380" Foreground="#8E9297" FontSize="18"/>
                     <TextBlock Text="1" Canvas.Right="80" Canvas.Top="517" Foreground="#8E9297" FontSize="18"/>
 
-                    <Border x:Name="ElevatorCar" Width="120" Height="90" Background="White" CornerRadius="5" Canvas.Left="158" Canvas.Bottom="50">
+                    <Border x:Name="ElevatorCar" Width="120" Height="90" Background="White" CornerRadius="5" Canvas.Left="158" Canvas.Bottom="72">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.4"/>
                         </Border.Effect>
@@ -136,10 +136,10 @@
                         <Button Content="4" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="4"/>
                         <Button Content="1" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="1"/>
                         <Button Content="2" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="2"/>
-                        <Button Content="&lt; &gt;" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Tag="Open"/>
-                        <Button Content="&gt; &lt;" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Tag="Close"/>
-                        <Button Content="SOS" Style="{StaticResource ElevatorButtonStyle}" Background="#F04747" Height="60" Width="65" Tag="Emergency"/>
-                        <Button Content="Svc" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Tag="Service"/>
+                        <Button Content="&lt; &gt;" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="Open"/>
+                        <Button Content="&gt; &lt;" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="Close"/>
+                        <Button Content="SOS" Style="{StaticResource ElevatorButtonStyle}" Background="#F04747" Height="60" Width="65" Click="InnerButton_Click" Tag="Emergency"/>
+                        <Button Content="Svc" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="Service"/>
                     </UniformGrid>
                 </Border>
 
