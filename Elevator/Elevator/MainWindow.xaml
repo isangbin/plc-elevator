@@ -93,7 +93,7 @@
                         <StackPanel VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock x:Name="TxtSmallFloor" Text="1F" Foreground="#23272E" FontWeight="Bold" FontSize="16"/>
-                                <TextBlock x:Name="TxtSmallDir" Text="↑" Foreground="#43B581" FontSize="16" Margin="5,0,0,0"/>
+                                <!--<TextBlock x:Name="TxtSmallDir" Text="↑" Foreground="#43B581" FontSize="16" Margin="5,0,0,0"/>-->
                             </StackPanel>
                             <Rectangle Width="80" Height="45" Fill="#D1D3D8" Margin="0,5,0,0"/>
                         </StackPanel>
@@ -124,9 +124,17 @@
 
                 <Border Grid.Column="1" Grid.Row="1" Background="#2F3136" BorderBrush="Black" BorderThickness="4" Margin="10,0,10,20">
                     <Grid x:Name="DoorContainer">
-                        <Rectangle x:Name="DoorLeft" Fill="#72767D" HorizontalAlignment="Left" Width="140" Margin="1,0"/>
-                        <Rectangle x:Name="DoorRight" Fill="#72767D" HorizontalAlignment="Right" Width="140" Margin="1,0"/>
-                        <Rectangle Width="2" Fill="Black" HorizontalAlignment="Center"/>
+                        <Rectangle x:Name="DoorLeft" Fill="#72767D" HorizontalAlignment="Left" Width="140" Margin="1,0" Stroke="Black">
+                            <Rectangle.RenderTransform>
+                                <TranslateTransform x:Name="LeftDoorTransform"/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <Rectangle x:Name="DoorRight" Fill="#72767D" HorizontalAlignment="Right" Width="140" Margin="1,0" Stroke="Black">
+                            <Rectangle.RenderTransform>
+                                <TranslateTransform x:Name="RightDoorTransform"/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <!--<Rectangle Width="2" Fill="Black" HorizontalAlignment="Center"/>-->
                     </Grid>
                 </Border>
 
