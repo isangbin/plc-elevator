@@ -132,7 +132,7 @@
                 <Border Grid.Column="1" Grid.Row="0" Background="#18191C" CornerRadius="5" Margin="20,20,20,10" Height="65" BorderBrush="#43B581" BorderThickness="1.2" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0">
                         <TextBlock x:Name="Text_InnerFloor" Text="1F" Foreground="#43B581" FontSize="35" FontWeight="Bold" FontFamily="Segoe UI Black"/>
-                        <TextBlock x:Name="Text_InnerDir" Text="" Foreground="#43B581" FontSize="35" Margin="15,0,0,0"/>
+                        <TextBlock x:Name="Text_InnerDir" Text="　" Foreground="#43B581" FontSize="35" Margin="15,0,0,0"/>
                     </StackPanel>
                 </Border>
 

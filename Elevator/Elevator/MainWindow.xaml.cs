@@ -151,7 +151,7 @@ namespace Elevator
                     Text_InnerDir.Text = "▼";
                     break;
                 default:
-                    Text_InnerDir.Text = ""; // 0, 3, 4, 5, 6은 대기 또는 문 동작 중이므로 빈칸
+                    Text_InnerDir.Text = "　"; // 0, 3, 4, 5, 6은 대기 또는 문 동작 중이므로 빈칸
                     break;
             }
         }
