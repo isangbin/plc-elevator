@@ -10,20 +10,34 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="4"/>
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" 
-                                CornerRadius="4" BorderBrush="#40444B" BorderThickness="1.5">
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="4" 
+                            BorderBrush="#40444B" 
+                            BorderThickness="1.5">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
+
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="#3E4451"/>
                             </Trigger>
+
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="#43B581"/>
                             </Trigger>
+
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Background, RelativeSource={RelativeSource Self}}" Value="Orange"/>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="border" Property="Background" Value="#FFB74D"/>
+                            </MultiDataTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -48,15 +62,15 @@
                     <Border Background="#2F3136" Margin="0,8" Padding="10" CornerRadius="5">
                         <StackPanel>
                             <TextBlock Text="4F" Foreground="Gray" HorizontalAlignment="Center" Margin="0,0,0,5"/>
-                            <Button Content="↓" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#F04747" Tag="4D" Click="CallButton_Click"/>
+                            <Button x:Name= "Outer_4D" Content="↓" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#F04747" Tag="4D" Click="CallButton_Click"/>
                         </StackPanel>
                     </Border>
                     <Border Background="#2F3136" Margin="0,8" Padding="10" CornerRadius="5">
                         <StackPanel>
                             <TextBlock Text="3F" Foreground="Gray" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                             <UniformGrid Columns="2">
-                                <Button Content="↑" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#43B581" Tag="3U" Click="CallButton_Click"/>
-                                <Button Content="↓" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#F04747" Tag="3D" Click="CallButton_Click"/>
+                                <Button x:Name= "Outer_3U" Content="↑" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#43B581" Tag="3U" Click="CallButton_Click"/>
+                                <Button x:Name= "Outer_3D" Content="↓" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#F04747" Tag="3D" Click="CallButton_Click"/>
                             </UniformGrid>
                         </StackPanel>
                     </Border>
@@ -64,15 +78,15 @@
                         <StackPanel>
                             <TextBlock Text="2F" Foreground="Gray" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                             <UniformGrid Columns="2">
-                                <Button Content="↑" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#43B581" Tag="2U" Click="CallButton_Click"/>
-                                <Button Content="↓" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#F04747" Tag="2D" Click="CallButton_Click"/>
+                                <Button x:Name= "Outer_2U" Content="↑" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#43B581" Tag="2U" Click="CallButton_Click"/>
+                                <Button x:Name= "Outer_2D" Content="↓" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#F04747" Tag="2D" Click="CallButton_Click"/>
                             </UniformGrid>
                         </StackPanel>
                     </Border>
                     <Border Background="#2F3136" Margin="0,8" Padding="10" CornerRadius="5">
                         <StackPanel>
                             <TextBlock Text="1F" Foreground="Gray" HorizontalAlignment="Center" Margin="0,0,0,5"/>
-                            <Button Content="↑" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#43B581" Tag="1U" Click="CallButton_Click"/>
+                            <Button x:Name="Outer_1U" Content="↑" Style="{StaticResource ElevatorButtonStyle}" Height="50" Foreground="#43B581" Tag="1U" Click="CallButton_Click"/>
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -118,7 +132,7 @@
                 <Border Grid.Column="1" Grid.Row="0" Background="#18191C" CornerRadius="5" Margin="20,20,20,10" Height="65" BorderBrush="#43B581" BorderThickness="1.2" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0">
                         <TextBlock x:Name="Text_InnerFloor" Text="1F" Foreground="#43B581" FontSize="35" FontWeight="Bold" FontFamily="Segoe UI Black"/>
-                        <TextBlock x:Name="Text_InnerDir" Text="↑" Foreground="#43B581" FontSize="35" Margin="15,0,0,0"/>
+                        <TextBlock x:Name="Text_InnerDir" Text="" Foreground="#43B581" FontSize="35" Margin="15,0,0,0"/>
                     </StackPanel>
                 </Border>
 
@@ -140,12 +154,12 @@
 
                 <Border Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <UniformGrid Columns="2" Width="140">
-                        <Button Content="3" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="3"/>
-                        <Button Content="4" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="4"/>
-                        <Button Content="1" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="1"/>
-                        <Button Content="2" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="2"/>
-                        <Button Content="&lt; &gt;" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="Open"/>
-                        <Button Content="&gt; &lt;" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="Close"/>
+                        <Button x:Name= "Inner_3" Content="3" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="3"/>
+                        <Button x:Name= "Inner_4" Content="4" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="4"/>
+                        <Button x:Name= "Inner_1" Content="1" Style="{StaticResource ElevatorButtonStyle}" Height="60" Click="InnerButton_Click" Tag="1" Margin="4,0,1,0"/>
+                        <Button x:Name= "Inner_2" Content="2" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="2"/>
+                        <Button x:Name= "PushOpen" Content="&lt; &gt;" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="Open"/>
+                        <Button x:Name= "PushClose" Content="&gt; &lt;" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="Close"/>
                         <Button Content="SOS" Style="{StaticResource ElevatorButtonStyle}" Background="#F04747" Height="60" Width="65" Click="InnerButton_Click" Tag="Emergency"/>
                         <Button Content="Svc" Style="{StaticResource ElevatorButtonStyle}" Height="60" Width="65" Click="InnerButton_Click" Tag="Service"/>
                     </UniformGrid>
