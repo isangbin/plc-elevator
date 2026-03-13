@@ -41,10 +41,12 @@ namespace Elevator
                 _isConnected = true;
                 // 연결 성공 시
                 MessageBox.Show("PLC Connected.");
+                ConnectText.Text = "PLC 통신 상태: 정상 [XG5000: 0.5s update]";
             }
             else
             {   // 연결 실패 시
                 MessageBox.Show("PLC 연결 실패: " + plc.GetReturnCodeString(ret));
+                ConnectText.Text = "PLC 통신 상태: 불량 [XG5000: 연결 실패]";
             }
 
             // --- 타이머 초기화 ---
